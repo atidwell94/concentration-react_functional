@@ -1,0 +1,12 @@
+#board {
+  max-width: 600px;
+}
+
+.card {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+}
