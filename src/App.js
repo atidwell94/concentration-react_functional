@@ -74,7 +74,7 @@ function App() {
     setPicks({first: -1, second: -1});
   }
 
-  renderCard = (i) => {
+  const renderCard = (i) => {
     const image = (images[i] === null) ? 'none' :
       ((picks.first === i || picks.second === i) ?
         'url(' + imagePath + images[i] + ')' :
@@ -91,7 +91,7 @@ function App() {
     }
   }
 
-  handleClick = (event) => {
+  const handleClick = (event) => {
     //console.log(event.target.id);
     const index = parseInt(event.target.id);
     let localPicks = {...picks};
@@ -100,18 +100,14 @@ function App() {
     }
     else {
       localPicks.second = index;
-      setPicks(localPicks);
-      setTimeout(checkCards, 2000, localPicks.first, localPicks.second, localImages, tries, matches);
     }
+    setPicks(localPicks);
+    setTimeout(checkCards, 2000, localPicks.first, localPicks.second, images, tries, matches);
   }
-}
 
-
-
-render = () => {
-  let status = (this.state.matches < 10) ?
-    'Matches: ' + this.state.matches + " Tries: " + this.state.tries :
-    "Congratulations!  You found all 10 matches in " + this.state.tries + " tries!";
+  let status = (matches < 10) ?
+    'Matches: ' + matches + " Tries: " + tries :
+    "Congratulations!  You found all 10 matches in " + tries + " tries!";
 
   return (
     <div id="top" className="container pt-5">
@@ -119,38 +115,38 @@ render = () => {
         <Status status={status}/>
         <div className="row">
           <div className="col-sm-1"></div>
-          {this.renderCard(0)}
-          {this.renderCard(1)}
-          {this.renderCard(2)}
-          {this.renderCard(3)}
-          {this.renderCard(4)}
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           <div className="col-1"></div>
         </div>
         <div className="row">
           <div className="col-sm-1"></div>
-          {this.renderCard(5)}
-          {this.renderCard(6)}
-          {this.renderCard(7)}
-          {this.renderCard(8)}
-          {this.renderCard(9)}
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           <div className="col-1"></div>
         </div>
         <div className="row">
           <div className="col-sm-1"></div>
-          {this.renderCard(10)}
-          {this.renderCard(11)}
-          {this.renderCard(12)}
-          {this.renderCard(13)}
-          {this.renderCard(14)}
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           <div className="col-1"></div>
         </div>
         <div className="row">
           <div className="col-sm-1"></div>
-          {this.renderCard(15)}
-          {this.renderCard(16)}
-          {this.renderCard(17)}
-          {this.renderCard(18)}
-          {this.renderCard(19)}
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           <div className="col-1"></div>
         </div>
       </div>
