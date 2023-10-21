@@ -36,7 +36,7 @@ const fillAndShuffle = () => {
 // pass parameters because setting state is asynchronous
 const isMatch = (firstPick, secondPick, images) => {
   if (images[firstPick].substr(4, 1) ===
-    images[secondPick].subtr(4, 1))
+    images[secondPick].substr(4, 1))
     return true;
   else
     return false;
@@ -64,6 +64,8 @@ function App() {
   // the event handler should edit state
   const checkCards = (firstPick, secondPick, images, tries, matches) => {
     setTries(tries + 1);
+    // console.log(firstPick);
+    // console.log(secondPick);
     if (isMatch(firstPick, secondPick, images)) {
       setMatches(matches + 1);
       // let localImages = [...images];
@@ -89,6 +91,7 @@ function App() {
       backgroundImage: image,
       cursor: cursor
     }
+    return (<Card index={i} style={style} eventHandler={eventHandler} />);
   }
 
   const handleClick = (event) => {
@@ -100,9 +103,9 @@ function App() {
     }
     else {
       localPicks.second = index;
+      setTimeout(checkCards, 2000, localPicks.first, localPicks.second, images, tries, matches);
     }
-    setPicks(localPicks);
-    setTimeout(checkCards, 2000, localPicks.first, localPicks.second, images, tries, matches);
+    setPicks(localPicks);  
   }
 
   let status = (matches < 10) ?
@@ -115,38 +118,38 @@ function App() {
         <Status status={status}/>
         <div className="row">
           <div className="col-sm-1"></div>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {renderCard(0)}
+          {renderCard(1)}
+          {renderCard(2)}
+          {renderCard(3)}
+          {renderCard(4)}
           <div className="col-1"></div>
         </div>
         <div className="row">
           <div className="col-sm-1"></div>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {renderCard(5)}
+          {renderCard(6)}
+          {renderCard(7)}
+          {renderCard(8)}
+          {renderCard(9)}
           <div className="col-1"></div>
         </div>
         <div className="row">
           <div className="col-sm-1"></div>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {renderCard(10)}
+          {renderCard(11)}
+          {renderCard(12)}
+          {renderCard(13)}
+          {renderCard(14)}
           <div className="col-1"></div>
         </div>
         <div className="row">
           <div className="col-sm-1"></div>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {renderCard(15)}
+          {renderCard(16)}
+          {renderCard(17)}
+          {renderCard(18)}
+          {renderCard(19)}
           <div className="col-1"></div>
         </div>
       </div>
